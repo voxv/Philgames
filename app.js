@@ -1,17 +1,3 @@
-if (process && process.env.NODE_ENV === "production") {
-    const {
-        exec
-    } = require('child_process');
-    exec('npm install', (err, stdout, stderr) => {
-        if (err) {
-            console.error(`Error: ${err}`);
-            return;
-        }
-        console.error(`stderr: ${stderr}`);
-    });
-}
-
-
 const http         = require('http'),
       fs           = require('fs'),
       io           = require('socket.io'),

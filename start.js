@@ -1,3 +1,16 @@
+if (process && process.env.NODE_ENV === "production") {
+    const {
+        exec
+    } = require('child_process');
+    exec('npm install', (err, stdout, stderr) => {
+        if (err) {
+            console.error(`Error: ${err}`);
+            return;
+        }
+        console.error(`stderr: ${stderr}`);
+    });
+}
+
 console.log('ok')
 const cluster = require('cluster'),
       stopSignals = [
