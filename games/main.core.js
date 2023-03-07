@@ -31,8 +31,8 @@ main_core.prototype.client_connect_to_server = function(login_name) {
 
 	var proto = 'ws'
 	var is_local = false
-	if (window.location.hostname === 'philgames.onrender.com') {
-		url = 'philgames.onrender.com'
+	if (window.location.hostname === 'phil-games.onrender.com') {
+		url = 'phil-games.onrender.com'
 		proto = 'wss'
 	} else {
 		url = 'localhost:3000'
