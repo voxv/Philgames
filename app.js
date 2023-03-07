@@ -77,7 +77,7 @@ const http         = require('http'),
 
 	var sio = new io.Server(server);
 
-	server.listen(3000);
+
 
     //var sio = io.listen(server);
 
@@ -115,7 +115,8 @@ const http         = require('http'),
 	 });
 
 	//console.log(env.NODE_IP)
-	server.listen(env.PORT || 8080, env.NODE_IP || '0.0.0.0', function () {
+	//server.listen(env.PORT || 8080, env.NODE_IP || '0.0.0.0', function () {
+		server.listen(3000);
   console.log(`woot Application worker ${process.pid} started... port is:`+env.PORT );
 });
 
