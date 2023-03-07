@@ -1,0 +1,17 @@
+{
+  "name": "philgames",
+  "version": "1.0.1",
+  "description": "Phil games",
+  "private": true,
+  "main": "start.js",
+  "scripts": {
+    "start": "node --use_strict start.js"
+  },
+  "author": "phil",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-uuid": "^1.4.8",
+    "socket.io": "^4.0.1"
+  }
+}

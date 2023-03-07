@@ -1,0 +1,546 @@
+body
+{
+	background-color:#000000;
+}
+
+#wrapper
+{
+	border:ridge 8px #fff3ff;
+	width:1290px;
+	height:900px;
+	margin-left:-16px;
+	margin-top:-16px;
+}
+
+#winlose
+{
+	position:absolute;
+	z-index:130;
+	width:720px;
+	height:380px;
+	top:180px;
+	left:280px;
+	background-color:#000000;
+	color:#ffff00;
+	display:none;
+	font-size:18px;
+	border:double 3px #ddddff;
+	//background-image:url('images/brain.jpg');
+
+}
+.selectorpieceview
+{
+
+	position:absolute;
+	z-index:30;
+
+}
+.selectorviewmaster
+{
+	position:absolute;
+	width:405px;
+	height:80px;
+	left:454px;
+	top:770px;
+	//border:ridge 2px #dddddd;
+	//background-color:#774433;
+}
+.selectorviewplayer
+{
+	position:absolute;
+	width:405px;
+	height:80px;
+	left:454px;
+	top:720px;
+	//border:ridge 2px #dddddd;
+	//background-color:#774433;
+}
+.placement_rightpanel_game
+{
+	width:800px;
+	height:700px;
+	//border:ridge 6px #ddddfd;
+	//background-color:#ffffff;
+	//background-image:url('images/back2.jpg');
+	//margin-top:300px;
+	//float:left;
+	position:absolute;
+	left:460px;
+	top:10px;
+	color:#cccc00;
+	z-index:10;
+}
+.masterstart_button
+{
+	position:absolute;
+	width:70px;
+	height:40px;
+	left:344px;
+	top:770px;
+	
+	color:#aaaaaa;
+	line-height:42px;
+	text-align:center;
+	background-color:#774433;
+	border:groove 2px #ddddfd;
+	cursor:default;
+}
+.playerstart_button
+{
+	position:absolute;
+	width:70px;
+	height:40px;
+	left:344px;
+	top:736px;
+	
+	color:#aaaaaa;
+	line-height:42px;
+	text-align:center;
+	background-color:#774433;
+	border:groove 2px #ddddfd;
+	cursor:default;
+}
+
+.placement_bottompanel_game
+{
+	width:685px;
+	height:122px;
+	border:ridge 2px #dddddd;
+	//background-color:#42aa5f;
+	margin-top:55px;
+	position:absolute;
+	left:100px;
+	top:720px;
+	margin-left:197px;
+}
+#grid_hotspot
+{
+	position:absolute;
+	//background-color:#ff7899;
+	top:141px;
+	left:490px;
+	width:500px;
+	height:500px;
+	
+}
+#cachette
+{
+	position:absolute;
+	//background-color:#774433;
+	font-size:36px;
+	z-index:220;
+	top:2px;
+	left:580px;
+	width:218px;
+	height:60px;
+	display:none;
+	color:#ffff00;
+	line-height:62px;
+}
+#cachette_master
+{
+	position:absolute;
+	//background-color:#774433;
+	font-size:36px;
+	z-index:220;
+	top:632px;
+	left:473px;
+	width:218px;
+	height:60px;
+	display:block;
+	color:#ffff00;
+	line-height:62px;
+
+}
+#placement_message
+{
+	border:ridge 3px #dddddd;
+	position:absolute;
+	background-color:#efefff;
+	color:#aaaa00;
+	top:220px;
+	left:260px;
+	width:675px;
+	height:45px;
+	z-index:220;
+	//background-image:url('images/back4.jpg');
+	font-size:36px;
+	padding:5px;
+	display:none;
+	align:center;
+	font-weight:bold;
+}
+#placement_message_game
+{
+	position:absolute;
+	background-color:#efefff;
+	top:39px;
+	left:500px;
+	width:290px;
+	height:30px;
+	z-index:120
+	background-image:url('51N4RpjyOML._SY300_.jpg');
+	font-size:36px;
+	padding:5px;
+	display:none;
+	font-weight:bold;
+	 transform: translateY(-50%);
+}
+
+#centered_message
+{
+	position:absolute;
+	background-color:#efefff;
+	top:339px;
+	left:500px;
+	width:290px;
+	height:75px;
+	z-index:255;
+	background-image:url('51N4RpjyOML._SY300_.jpg');
+	font-size:28px;
+	padding:5px;
+	display:none;
+	font-weight:bold;
+	 transform: translateY(-50%);
+}
+#end_message
+{
+	position:absolute;
+	background-color:#efefff;
+	top:100px;
+	left:190px;
+	width:900px;
+	height:645px;
+	z-index:255;
+	background-image:url('51N4RpjyOML._SY300_.jpg');
+	font-size:48px;
+	padding:5px;
+	display:none;
+	font-weight:bold;
+	
+}
+#gameover_message
+{
+	position:absolute;
+	background-color:#efefff;
+	top:339px;
+	left:500px;
+	width:290px;
+	height:75px;
+	z-index:255;
+	background-image:url('51N4RpjyOML._SY300_.jpg');
+	font-size:28px;
+	padding:5px;
+	display:none;
+	font-weight:bold;
+}
+.reset
+{
+	position:absolute;
+	left:26px;
+	top:119px;
+	z-index:90;
+}
+#draw_mini
+{
+	width:1px;
+	height:1px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:30;
+}
+
+#resultGrid
+{
+	width:300px;
+	height:300px;
+	background-color:#e2daff;
+}
+.homehead_tot
+{
+	//position:absolute;
+	left:0px;
+	top:0px;
+	width:1290px;
+	height:50px;
+	background-color:#222222;
+
+	//clear:both;
+	z-index:400;
+	float:left;
+}
+
+.master_home
+{
+	//position:absolute;
+	left:0px;
+	top:0px;
+	width:1290px;
+	height:675px;
+	
+	
+
+}
+.sub_master
+{
+	
+	left:0px;
+	top:0px;
+	width:1290px;
+	height:50px;
+
+}
+.homehead_backimg
+{
+	float:left;
+	//margin-left:5px;
+	width:170px;
+	height:50px;
+	cursor:pointer;
+	text-align:left;
+}
+
+.homehead_scorestot
+{
+	float:left;
+	//margin-left:15px;
+	width:75%;
+	height:50px;
+
+}
+
+.homehead_oneplayerscoretot
+{
+	float:left;
+	width:150px;
+	height:45px;
+	color:aaaa44; 
+	font-weight:bold; 
+	font-size:16px;
+	text-align:center;
+	line-height:48px;
+	background-image:url('../lobby/images/b_blue.png');
+}
+.homehead_oneplayername
+{
+	float:left;
+	width:75px;
+	height:50px;
+	padding-left:18px;
+
+}
+.homehead_oneplayerscore
+{
+	float:left;
+	width:50px;
+	height:50px;
+
+}
+
+.placement_leftpanel
+{
+	width:178px;
+	height:50px;
+	float:left;
+}
+
+.placement_rightpanel
+{
+	width:800px;
+	height:158px;
+	border:ridge 6px #ddddfd;
+	background-color:#ffffff;
+	//background-image:url('images/back_game_intro.jpg');
+	float:left;
+	color:#cccc00;
+}
+
+.placement_bottompanel
+{
+	width:685px;
+	height:152px;
+	//margin-top:55px;
+	float:left;
+	//margin-left:180px;
+}
+
+.mainpanel_game
+{
+	width:1300px;
+	height:1400px;
+	position:absolute;
+	left:440px;
+	top:30px;
+	background-color:#ffff0f;
+}
+
+/********  PLAYERLIST  *********/
+
+.playerviewcontainer
+{
+	width:170px;
+	height:121px;
+	padding:2px;
+	float:left;
+	border:ridge 2px #dddddd;
+	background-image:url('images/back_light.jpg');
+}
+.playerlistentry
+{
+	margin-left:1px; 
+	font-size:18px;
+	border-bottom:solid 1px #bbbbbb;
+	margin-bottom:3px;
+	padding-bottom:7px;
+	background-color:#000;
+}
+
+.playerlistentryname
+{
+	float:left;
+	width:106px;
+}
+.playerlistentryname_green
+{
+	float:left;
+	width:106px;
+	color:#aaaa00;
+}
+
+
+
+
+/********  CHAT  *********/
+
+.chatpanel_back_tot
+{
+	width:800px;
+	height:100px;
+	
+}
+.chatpanel_back
+{
+	width:800px;
+	height:400px;
+	background-color:#ffffff;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:ridge 2px #dddddd;
+}
+
+.chatinput
+{
+	margin-top:4px;
+	width:1500px;
+
+}
+.chatentry
+{
+	width:100%; 
+	height:16px; 
+	margin-bottom:4px; 
+}
+.chatentryusername
+{
+	font-size:16px; 
+	float:left; 
+	width:84px; 
+	margin-left:11px;
+	color:#02007d;
+	font-weight:bold;
+	height:15px;
+}
+.chatentrymessage
+{
+	float:left; 
+	font-weight:bold;
+	font-family:"Trebuchet MS",Helvetica;
+	font-size:13px;
+	line-height:15px;
+}
+.chatentrymessage_bot
+{
+	float:left; 
+	font-weight:bold;
+	color:#770044;
+}
+
+
+
+
+/********  START BUTTON  *********/
+
+.start_game_button
+{
+	position:absolute;
+	left:12px;
+	top:124px;
+	z-index:90;
+}
+
+.startbutton{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 1;
+    width: 150px;
+    height:25px;
+    font-family: Tahoma;
+    font-size:12px;
+    background: #FFA500;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    padding-bottom:4px;
+    background: -moz-linear-gradient(top, #FFA500 1%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #FFA500), color-stop(100%, #ededed));
+    background: -webkit-linear-gradient(top, #FFA500 1%, #ededed 100%);
+    background: -o-linear-gradient(top, #FFA500 1%, #ededed 100%);
+    background: -ms-linear-gradient(top, #FFA500 1%, #ededed 100%);
+    background: linear-gradient(to bottom, #FFA500 1%, #ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFA500', endColorstr='#ededed', GradientType=0);
+}
+.startbutton:disabled{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 1;
+    width: 150px;
+    height:25px;
+    font-family: Tahoma;
+    font-size:12px;
+    background: #aaaaaa;
+    color:#ffffff;
+    font-weight:bold;
+    cursor:pointer;
+    padding-bottom:4px;
+    background: -moz-linear-gradient(top, #aaaaaa 1%, #aaaaaa 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #aaaaaa), color-stop(100%, #aaaaaa));
+    background: -webkit-linear-gradient(top, #aaaaaa 1%, #aaaaaa 100%);
+    background: -o-linear-gradient(top, #aaaaaa 1%, #aaaaaa 100%);
+    background: -ms-linear-gradient(top, #aaaaaa 1%, #aaaaaa 100%);
+    background: linear-gradient(to bottom, #aaaaaa 1%, #aaaaaa 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaaaaa', endColorstr='#aaaaaa', GradientType=0);
+}
+.startbutton_activated{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 1;
+    width: 150px;
+    height:25px;
+    font-family: Tahoma;
+    font-size:13px;
+    background: #009900;
+    color:#ffffff;
+    font-weight:bold;
+    cursor:pointer;
+    padding-bottom:4px;
+    background: -moz-linear-gradient(top, #009900 1%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #009900), color-stop(100%, #ededed));
+    background: -webkit-linear-gradient(top, #009900 1%, #ededed 100%);
+    background: -o-linear-gradient(top, #009900 1%, #ededed 100%);
+    background: -ms-linear-gradient(top, #009900 1%, #ededed 100%);
+    background: linear-gradient(to bottom, #009900 1%, #ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='##009900', endColorstr='#ededed', GradientType=0);
+}
+
+.startbutton[disable=]:hover{ background: #ffffff; }

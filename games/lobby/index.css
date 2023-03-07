@@ -1,0 +1,244 @@
+body
+{
+	background-color:#ffffff;
+}
+
+#wrapper
+{
+	//border:ridge 8px #fff3ff;
+	width:1290px;
+	height:650px;
+	margin-left:-16px;
+	margin-top:-16px;
+	background-color:#ffffff;
+}
+#panelContent
+{
+	
+
+}
+.lobby_gamelist_item
+{
+	width:300px;
+	height:190px;
+	border:solid 1px #777777;
+	float:left;
+	margin:10px;
+	cursor:pointer;
+}
+.lobby_toppanel
+{
+	position:absolute;
+	width:1290px;
+	height:70px;
+	left:0px;
+	top:0px;
+	border-bottom:solid 1px #777777;
+	background-color:#222222;
+	color:#aaaa44;
+	text-align:center;
+	font-size:22px;
+	font-weight:bold; 
+	line-height:65px;
+
+	
+}
+.panel_head
+{
+	position:absolute;
+	left:0px;
+	top:0px; 
+	width:1290; 
+	height:70px;
+	background-color:#222222; 
+	color:aaaa44; 
+	font-weight:bold; 
+	font-size:20px;
+	text-align:center;
+	line-height:65px;
+
+
+}
+.panel_backbutton
+{
+	position:absolute;
+	left:20px;
+	top:10px; 
+	width:50px; 
+	height:50px;
+	cursor:pointer;
+}
+.panel_creategame
+{
+	position:absolute;
+	left:20px;
+	top:75px; 
+	width:167px; 
+	height:50px;
+	font-weight:bold;
+	font-size:18px;
+	color:#222288;
+	//border-bottom:double 2px #888888;
+	line-height:50px;
+	cursor:pointer;
+	text-decoration:underline;
+}
+.houses
+{
+	position:absolute;
+	left:0px;
+	top:140px; 
+	width:1100px;
+	margin-left:14px;
+	
+	
+}
+.onehouse
+{
+	//position:absolute;
+	width:360px;
+	height:90px;
+	margin:5px;
+	border:double 2px #888888;	
+	float:left;
+}
+.househead
+{
+	left:0px;
+	top:0px; 
+	width:360px; 
+	height:90px;
+}
+.househead_image
+{
+	left:0px;
+	top:0px; 
+	width:90px; 
+	height:90px;
+	z-index:20;
+	float:left;
+	cursor:pointer;
+}
+.househead_infos
+{
+	//position:absolute;
+	left:90px;
+	top:0px; 
+	width:250px; 
+	height:90px;
+	padding-left:15px;
+	float:left;
+}
+
+.househead_infos_head
+{
+	font-size:18px;
+	color:#222255;
+	clear:both;
+	border-bottom:double 2px #888888;
+}
+.househead_infos_players
+{
+	font-size:20px; 
+	color:#222277; 
+	clear:both;
+	font-size:20px;
+}
+.house_one_player
+{
+	padding-left:3px; 
+	line-height:30px; 
+	float:left; 
+	width:91px; 
+	height:30px;
+}
+
+.profilemanager_tot
+{
+	position:absolute;
+	top:30px;
+	left:30px;
+	width:250px;
+	height:315px;
+	border:double 3px #888888;
+	background-color:#222255;
+}
+.profilemanager_head
+{
+	clear:both;
+	width:250px;
+	font-weight:bold;
+	color:#aaaaaa;
+	font-size:18px;
+	line-height:30px;
+	text-align:center;
+	border-bottom:double 5px #888888;
+	background-color:#111111;
+}
+.profilemanager_oneprofile
+{
+	clear:both;
+	height:65px;
+	font-weight:bold;
+	color:#aaaaee;
+	font-size:26px;
+	line-height:65px;
+	text-align:center;
+	border-bottom:solid 1px #aaaaaa;
+
+}
+.profilemanager_createnew_tot
+{
+	clear:both;
+	height:50px;
+	display:none;
+}
+.profilemanager_createnew_button
+{
+	clear:both;
+	height:45px;
+	font-size:18px;
+	color:#aaaaaa;
+	cursor:pointer;
+	text-align:center;
+	line-height:39px;
+	border-top:ridge 3px #dddddd;
+	background-color:#111111;
+
+}
+.profilemanager_createnew_text
+{
+	float:left;
+	padding-left:8px;
+	
+}
+.profilemanager_createnew_gobutton
+{
+	padding-left:8px;
+	padding-right:8px;
+	margin-left:8px;
+	float:left;
+	cursor:pointer;
+	background-color:#eeeeee;
+	font-size:14px;
+	line-height:24px;
+	height:21px;
+}
+#placement_message
+{
+	border:ridge 3px #dddddd;
+	position:absolute;
+	background-color:#efefff;
+	color:#aaaa00;
+	top:120px;
+	left:260px;
+	width:675px;
+	height:45px;
+	z-index:220;
+	//background-image:url('images/back_light.jpg');
+	font-size:36px;
+	padding:5px;
+	display:none;
+	text-align:center;
+	font-weight:bold;
+}
