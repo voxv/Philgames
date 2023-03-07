@@ -104,5 +104,5 @@ const http         = require('http'),
 	//server.listen(env.PORT || 8080, env.NODE_IP || '0.0.0.0', function () {
 		server.listen(3000);
   console.log(`woot Application worker ${process.pid} started... port is:`+env.PORT );
-});
+//});
 
