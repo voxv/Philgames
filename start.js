@@ -1,4 +1,5 @@
 if (process && process.env.NODE_ENV === "production") {
+	console.log('running npm...')
     const {
         exec
     } = require('child_process');
