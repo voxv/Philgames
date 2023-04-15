@@ -35,7 +35,7 @@ main_core.prototype.client_connect_to_server = function(login_name) {
 		url = 'philgames.voxv.repl.co'
 		proto = 'wss'
 	} else {
-		url = 'localhost:3000'
+		url = 'localhost:3000';
 		is_local = true
 	}
 
