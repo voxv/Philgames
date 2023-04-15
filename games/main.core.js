@@ -20,8 +20,8 @@ main_core.prototype.client_connect_to_server = function(login_name) {
 
 	var proto = 'ws'
 	var is_local = false
-	if (window.location.hostname === 'philgames.voxv.repl.co') {
-		url = 'philgames.voxv.repl.co'
+	if (window.location.hostname === 'fun.voxv.repl.co') {
+		url = 'fun.voxv.repl.co'
 		proto = 'wss'
 	} else {
 		url = 'localhost:3000';
