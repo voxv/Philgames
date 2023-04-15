@@ -17,17 +17,6 @@ if( 'undefined' != typeof global ) {
 }
 
 main_core.prototype.client_connect_to_server = function(login_name) {
-		/*if (ismobile())
-		{
-			this.low_res = true;
-		}*/
-	/*if (!DEVMODE){
-		this.socket = io.connect()
-        //this.socket = io.connect('https://philgames.herokuapp.com/');
-        console.log('maincore trying to connecto to https://philgames.herokuapp.com:')
-   }
-	else
-		this.socket = io.connect()*/
 
 	var proto = 'ws'
 	var is_local = false
