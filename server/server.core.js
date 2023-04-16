@@ -2115,6 +2115,8 @@ game_core_boggle.prototype.calcPointage = function(client) {
 	this.results = ret;
 	//return {"results":ret};
 }
+
+
 if( 'undefined' != typeof global ) {
     module.exports = global.game_core_boggle = game_core_boggle;
 }
@@ -2122,5 +2124,328 @@ if( 'undefined' != typeof global ) {
 
 
 
+//////////// ULCER   //////////////////////
+
+var game_core_ulcer = function(game_instance){
+
+    this.instance = game_instance;
+	var hostplayer = this.instance.player_host
+
+	var ph = new game_player(this,hostplayer)
+	ph.color = 0
+	ph.pre_played = 0
+	ph.pre_elimine = 0
+	ph.game_won = 0
+
+	var tosave = hostplayer.myprofile.tosave
+	for (var i in tosave)
+	{
+		if (tosave.hasOwnProperty(i))
+		{
+			ph.color = tosave[i]
+		}
+	}
+	hostplayer.myprofile.tosave = {}
+
+	hostplayer.myprofile.tosave = { 'color': ph.color }
+
+    this.players = {
+        self : ph,
+        others : {}
+    };
+
+    this.current_turn = 1
+    this.players_ended = []
+	this.player_order = { }
+    this.has_winning = 0
+    this.is_pre = 1
+};
+
+game_core_ulcer.prototype.addClient = function(client,username)
+{
+	var thegame = client.game
+	if (this.players.others[client.userid]==undefined)
+	{
+		this.players.others[client.userid] =  new game_player(this,client)
+	}
+	this.players.others[client.userid].login_name=username;
+	this.players.others[client.userid].id=client.userid;
+	this.players.others[client.userid].score = 0
+
+	var available = 0
+	var current_cols = []
+	var hostcol = this.players.self.color
+	current_cols.push(hostcol)
+
+	for (var i in this.players.others)
+	{
+		if (this.players.others.hasOwnProperty(i) && this.players.others[i].color!=undefined)
+		{
+
+			current_cols.push(parseInt(this.players.others[i].color))
+		}
+	}
+	var count = 0
+
+	for (var i = 0 ; i < current_cols.length ; i++)
+	{
+
+		if (inArray(count,current_cols))
+		{
+			count++
+			continue
+		}
+		else break
+	}
+
+
+	this.players.others[client.userid].color = count
+	this.players.others[client.userid].pre_played = 0
+	this.players.others[client.userid].pre_elimine = 0
+	this.players.others[client.userid].game_won = 0
+
+	var tosave = client.myprofile.tosave
+	for (var i in tosave)
+	{
+		if (tosave.hasOwnProperty(i))
+		{
+			this.players.others[client.userid].color = tosave[i]
+
+		}
+	}
+	client.myprofile.tosave = {}
+
+
+
+	client.myprofile.tosave = { 'color': this.players.others[client.userid].color }
+
+	this.updatePlayerInfo(client)
+}
+
+game_core_ulcer.prototype.updatePlayerInfo = function(client)
+{
+	var tot = {}
+	tot['id'] = client.userid
+
+	if (client.hosting)
+	{
+		tot['color'] = client.game.gamecore.players.self.color
+		tot['pre_played'] = client.game.gamecore.players.self.pre_played
+		tot['pre_elimine'] = client.game.gamecore.players.self.pre_elimine
+		tot['game_won'] = client.game.gamecore.players.self.game_won
+		tot['login_name'] = client.game.gamecore.players.self.login_name
+	}
+	else
+	{
+
+		tot['color'] = client.game.gamecore.players.others[client.userid].color
+		tot['pre_played'] = client.game.gamecore.players.others[client.userid].pre_played
+		tot['pre_elimine'] = client.game.gamecore.players.others[client.userid].pre_elimine
+		tot['game_won'] = client.game.gamecore.players.others[client.userid].game_won
+		tot['login_name'] = client.game.gamecore.players.others[client.userid].login_name
+	}
+	this.sendToAll('s.upi.'+JSON.stringify(tot),client)
+	//console.log('s.upi.'+JSON.stringify(tot))
+}
+
+game_core_ulcer.prototype.getPlayerInfo = function(client,userid)
+{
+	var tot = {}
+	tot['id'] = userid
+	var thegame = client.game
+	var thegamecore = thegame.gamecore
+	var hostid = thegame.player_host.userid
+	if (userid==hostid)
+	{
+		tot['color'] = thegamecore.players.self.color
+		tot['pre_played'] = thegamecore.players.self.pre_played
+		tot['pre_elimine'] = thegamecore.players.self.pre_elimine
+		tot['game_won'] = thegamecore.players.self.game_won
+		tot['login_name'] = thegamecore.players.self.login_name
+	}
+	else
+	{
+		if (thegamecore.players.others[userid]==undefined)
+		{
+			thegamecore.players.others[userid] = new game_player(this,client)
+		}
+		tot['color'] = thegamecore.players.others[userid].color
+		tot['pre_played'] = thegamecore.players.others[userid].pre_played
+		tot['pre_elimine'] = thegamecore.players.others[userid].pre_elimine
+		tot['game_won'] = thegamecore.players.others[userid].game_won
+		tot['login_name'] = thegamecore.players.others[userid].login_name
+	}
+
+	client.send('s.upi.'+JSON.stringify(tot))
+}
+
+game_core_ulcer.prototype.sendChangePlayerTurn = function(client)
+{
+	//console.log('start0')
+	var not_eliminated = false
+	var cc = 0
+	while (!not_eliminated && cc < 100)
+	{
+		cc++
+		//console.log('start '+JSON.stringify(this.player_order))
+		var themax = 0;
+		for (var i in this.player_order)
+		{
+			if (this.player_order.hasOwnProperty(i))
+			{
+				if (this.player_order[i]==undefined) continue
+				//console.log('WTF i:'+i+ 'this.player_order:'+this.player_order[i])
+				if (parseInt(i)>themax)
+				{
+					themax = parseInt(i)
+					//console.log('i='+i+' themax is now '+themax)
+				}
+			}
+		}
+		//console.log('themax 0 '+themax)
+		themax++
+		//console.log('themax 1 '+themax)
+		this.current_turn++
+		this.current_turn = (this.current_turn%themax)
+		if (this.current_turn==0) this.current_turn=1
+
+		var hostid = this.players.self.id
+
+		if (this.player_order[this.current_turn]==hostid)
+		{
+			if (this.players.self.pre_elimine==0)
+			{
+				//console.log('host ('+hostid+') not elimitated')
+				not_eliminated = true
+			}
+			else
+			{
+				//console.log('host ('+hostid+') is elimitated')
+			}
+		}
+		else
+		{
+			//console.log('currenturn:'+this.current_turn+' player_order:'+JSON.stringify(this.player_order)+' themax:'+themax)
+			if (this.players.others[this.player_order[this.current_turn]].pre_elimine==0)
+			{
+				//console.log('client ('+this.player_order[this.current_turn]+') not elimitated')
+				not_eliminated = true
+			}
+			else
+			{
+				//console.log('client ('+this.player_order[this.current_turn]+') is elimitated')
+			}
+		}
+
+	}
+	//console.log('s.ct.'+this.player_order[this.current_turn])
+	this.sendToAll('s.ct.'+this.player_order[this.current_turn],client)
+}
+
+game_core_ulcer.prototype.sendToAll = function(msg,client)
+{
+	var thegame = client.game
+	thegame.player_host.send(msg)
+	var allclients = thegame.player_clients
+	for (var i in allclients)
+	{
+		if (allclients.hasOwnProperty(i))
+		{
+			allclients[i].send(msg)
+		}
+	}
+}
+game_core_ulcer.prototype.getPlayerTurn = function()
+{
+	return this.player_order[this.current_turn]
+}
+
+game_core_ulcer.prototype.sendChangePlayerTurnInGame = function(client)
+{
+	//console.log('change turn before:'+this.current_turn+' player:'+this.player_order[this.current_turn])
+	var themax = 0;
+	for (var i in this.player_order)
+	{
+		if (this.player_order.hasOwnProperty(i))
+		{
+			if (this.player_order[i]==undefined) continue
+			if (i>themax)
+				themax = parseInt(i)
+		}
+	}
+	themax++
+	this.current_turn++
+	this.current_turn = (this.current_turn%themax)
+	if (this.current_turn==0) this.current_turn=1
+	this.sendToAll('s.ct.'+this.player_order[this.current_turn],client)
+	//console.log('change turn after:'+this.current_turn+' player:'+this.player_order[this.current_turn])
+	//console.log('PO:'+JSON.stringify(this.player_order))
+}
+game_core_ulcer.prototype.initOrder = function(thegame, force_player)
+{
+	var h = thegame.player_host.userid
+	var c = thegame.player_clients
+	var tot = { }
+
+	if (force_player)
+	{
+
+		tot[1] = force_player
+
+		var count = 2
+		var themax = 0;
+		var ind = 0
+
+		for (var i in this.player_order)
+		{
+			if (this.player_order.hasOwnProperty(i))
+			{
+				if (i>themax)
+					themax = parseInt(i)
+				if (this.player_order[i]==force_player)
+					ind = parseInt(i)
+			}
+		}
+		themax++
+		this.current_turn = ind+1
+		this.current_turn = (this.current_turn%themax)
+		if (this.current_turn==0) this.current_turn=1
+
+		while (this.current_turn!=ind)
+		{
+			tot[count++] = this.player_order[this.current_turn]
+			//console.log('ind is '+ind+' current_turn:'+this.current_turn+'-- setting tot['+(count-1)+'] to '+this.player_order[this.current_turn])
+			this.current_turn++
+			this.current_turn = (this.current_turn%themax)
+			if (this.current_turn==0) this.current_turn=1
+		}
+
+	}
+	else
+	{
+		var count = 1
+
+		if (this.players.self.game_won==0)
+		{
+			tot[1] = h
+			count = 2
+		}
+		for (var i in c)
+		{
+			if (c.hasOwnProperty(i))
+			{
+				if (this.players.others[c[i].userid].game_won==0)
+					tot[count++] = c[i].userid
+			}
+		}
+	}
+	//console.log('NEW ORDER:'+JSON.stringify(tot))
+	this.current_turn = 1
+	this.player_order = tot
+
+}
+if( 'undefined' != typeof global ) {
+    module.exports = global.game_core_ulcer = game_core_ulcer;
+}
 
 

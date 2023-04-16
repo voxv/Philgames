@@ -26,6 +26,7 @@ main_core.prototype.client_connect_to_server = function(login_name) {
 	} else {
 		url = 'localhost:3000';
 		is_local = true
+		console.log('is local')
 	}
 
 	this.socket = io(proto + "://" + url, {

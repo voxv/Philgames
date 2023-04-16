@@ -51,6 +51,12 @@
 			games: { },
 			game_count: 0
 		}
+		,
+		ulcer: {
+			max_players:4,
+			games: { },
+			game_count: 0
+		}
 	}
 	game_server.joinlocks = { }
 

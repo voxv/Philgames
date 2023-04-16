@@ -8,7 +8,7 @@ YUI.add("main", function(Y) {
 		theframe:null,
 		master_audio:null,
 		initializer: function(){
-
+			// 1290 x 900
 			main_instance.client_connect_to_server();
 			var gf = Y.Node.create('<div style="background-color:#ffffff; position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"><iframe  id="gameframe" scrolling="no" width=1290 height=900 src="./games/lobby/index.html"></iframe></div>');
 			this.get('container').append(gf);
@@ -32,7 +32,12 @@ YUI.add("main", function(Y) {
 		setGame:function(gamename,gameid)
 		{
 			main_instance.activeGame = gameid;
-			this.get('container').one('iframe').setAttribute('src','./games/'+gamename+'/index.html');
+			var iframe = this.get('container').one('iframe')
+			iframe.setAttribute('src','./games/'+gamename+'/index.html');
+			if (gamename=='ulcer') {
+				iframe.setAttribute('width','1900px');
+				iframe.setAttribute('height','1216px');
+			}
 		},
 		render: function()
 		{

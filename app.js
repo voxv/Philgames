@@ -48,6 +48,9 @@ const http         = require('http'),
     app.get( 'games/boggle', function( req, res ){
         res.sendFile( 'games/boggle/index.html' , { root:__dirname });
     });
+    app.get( 'games/ulcer', function( req, res ){
+        res.sendFile( 'games/ulcer/index.html' , { root:__dirname });
+    });
 	app.get('/healthcheck', (req, res) => {
 		res.status(200).json({
 			status: 'OK',
