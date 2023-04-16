@@ -38,6 +38,7 @@ YUI.add("gameapp", function(Y) {
 		chatview:null,
 		initializer: function()
 		{
+			document.getElementById("viewport").setAttribute("content", "width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0");
 			this.reinit()
 			game.players.self.login_name=parrframe.main_instance.login_name
 

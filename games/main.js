@@ -37,6 +37,8 @@ YUI.add("main", function(Y) {
 			if (gamename=='ulcer') {
 				iframe.setAttribute('width','1900px');
 				iframe.setAttribute('height','1216px');
+				var d = Y.one('meta');
+				alert(d)
 			}
 		},
 		render: function()
