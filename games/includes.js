@@ -18,14 +18,8 @@ function ismobile() {
 var metaTag=document.createElement('meta');
 metaTag.name = "viewport"
 var scale = 0.67
-if (ismobile()) {
-	if (GAME_NAME && GAME_NAME=='ulcer') {
-		alert('ulcer')
-		scale = 0.5;
-	} else {
-		scale = 0.4;
-	}
-}
+if (ismobile())
+	scale = 0.4;
 
 metaTag.content = "width=device-width, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=0"
 
