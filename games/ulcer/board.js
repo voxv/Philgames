@@ -49,7 +49,7 @@ var gridopacity = 1;
 		{
 			var c = this.get('container');
 
-			c.append('<img style="position:absolute; left:180px; top:0px; width:1190px; height:1190px;"  src="./images/board.png"/>');
+			c.append('<img style="position:absolute; left:180px; top:0px; width:940px; height:940px;"  src="./images/board.png"/>');
 			/*var popper = this.popperview = new Y.PopperView();
 			popper.get('container').setStyle('position','absolute');
 			popper.get('container').setStyle('left',popperposition[0]);

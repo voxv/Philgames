@@ -18,8 +18,8 @@ function ismobile() {
 var metaTag=document.createElement('meta');
 metaTag.name = "viewport"
 var scale = 0.67
-if (ismobile())
-	scale = 0.4;
+//if (ismobile())
+//	scale = 0.4;
 
 metaTag.content = "width=device-width, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=0"
 
