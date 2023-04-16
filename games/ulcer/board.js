@@ -2,7 +2,6 @@ YUI.add("board", function(Y) {
 
 var parrframe = parent;
 var parrapp = parent.app.get('activeView');
-
 var grid = [
 				[378,942],[314,862],[271,783],[230,690],[25,261],[34,183],[77,122],
 				[133,69],[195,28],[270,20],[344,20],[419,20],[493,28],[554,68],
