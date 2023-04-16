@@ -19,7 +19,9 @@ var metaTag=document.createElement('meta');
 metaTag.name = "viewport"
 var scale = 0.67
 if (ismobile()) {
+	alert('mobile')
 	if (GAME_NAME=='ulcer') {
+		alert('ulcer')
 		scale = 0.5;
 	} else {
 		scale = 0.4;
