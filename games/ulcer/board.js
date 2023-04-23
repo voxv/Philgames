@@ -3,10 +3,10 @@ YUI.add("board", function(Y) {
 var parrframe = parent;
 var parrapp = parent.app.get('activeView');
 var grid = [
-				[378,942],[314,862],[271,783],[230,690],[25,261],[34,183],[77,122],
-				[133,69],[195,28],[270,20],[344,20],[419,20],[493,28],[554,68],
+				[143,763],[93,699],[54,635],[30,569],[22,499],[24,428],[39,359],[62,298],[100,234],
+				[146,174],[204,130],[268,94],[344,20],[419,20],
 				[610,123],[652,184],[662,259],[662,334],[662,408],[657,486],[616,550],
-				[561,606],[500,647],[423,657],[346,657],[269,657],[192,648],[131,608]
+				[561,606],[500,647],[423,657],[346,657],[269,657],[992,648],[931,608]
 			]
 var gridhomes = [
 				[[17,563],[49,604],[87,640],[128,673]],
@@ -48,7 +48,7 @@ var gridopacity = 1;
 		{
 			var c = this.get('container');
 
-			c.append('<img style="position:absolute; left:280px; top:0px; width:940px; height:940px;"  src="./images/board.png"/>');
+			c.append('<img style="position:absolute; left:280px; top:0px; width:940px; height:940px;"  src="./images/board_2.png"/>');
 			/*var popper = this.popperview = new Y.PopperView();
 			popper.get('container').setStyle('position','absolute');
 			popper.get('container').setStyle('left',popperposition[0]);
@@ -767,7 +767,7 @@ var gridopacity = 1;
 			for (var i = 0 ; i < 28 ; i++)
 			{
 				var g = grid[i];
-				var sv = this.gridsquares[i] = new Y.GridSquareView({model:new Y.GridSquare({id:i,left:g[0],top:g[1],width:w})})
+				var sv = this.gridsquares[i] = new Y.GridSquareView({model:new Y.GridSquare({id:i,left:g[0]+285,top:g[1]-25,width:w})})
 				this.allsquares[i] = sv;
 				c.append(sv.get('container'));
 			}
