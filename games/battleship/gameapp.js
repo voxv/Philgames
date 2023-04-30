@@ -522,6 +522,9 @@ YUI.add("gameapp", function(Y) {
 						to: { opacity: 0 },
 						duration : 0.5
 					});
+					t_anim2.on('end', function() {
+						node2.setStyle('display','none');
+					})
 					t_anim2.run();
 				});
 
