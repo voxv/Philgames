@@ -1,5 +1,5 @@
 var mastermind_server = module.exports = { handler : null }
-	var inverseSol = function(sol)
+	/*var inverseSol = function(sol)
 	{
 		var ret = {}
 		var mmap = { 0:3,1:2,2:1,3:0 }
@@ -19,8 +19,8 @@ var mastermind_server = module.exports = { handler : null }
 	for(var i = 0; i < length; i++) {
 		if(haystack[i] == needle) return true;
 	}
-	return false;
-}
+	return false;*/
+//}
 mastermind_server.handler  = function(client,message) {
 		var commands = message.split('.');
 		var command = commands[0];
@@ -245,7 +245,18 @@ mastermind_server.handler  = function(client,message) {
 						}
 
 						//console.log('attempt:'+JSON.stringify(new_attempt))
-						var attempt_inv = inverseSol(new_attempt)
+						//var attempt_inv = inverseSol(new_attempt)
+						var ret = {}
+						var mmap = { 0:3,1:2,2:1,3:0 }
+						for (var i in new_attempt)
+						{
+							if (new_attempt.hasOwnProperty(i))
+							{
+									ret[mmap[i]] =new_attempt[i]
+							}
+						}
+						var attempt_inv = ret
+
 						//console.log('inv attempt:'+JSON.stringify(attempt_inv))
 
 						var tot_black = 0;
@@ -269,7 +280,13 @@ mastermind_server.handler  = function(client,message) {
 										if (client.game.gamecore.solution.hasOwnProperty(j))
 										{
 
-											if (!inArray(j,checked_whites) && client.game.gamecore.solution[j]==attempt_inv[i] && client.game.gamecore.solution[j]!=attempt_inv[j])
+											var check = false
+											var length = checked_whites.length;
+											for(var z = 0; z < length; z++) {
+												if(checked_whites[z] == j) check = true;
+											}
+
+											if (!check && client.game.gamecore.solution[j]==attempt_inv[i] && client.game.gamecore.solution[j]!=attempt_inv[j])
 											{
 												//logproduce('towhite++');
 												checked_whites.push(j)
