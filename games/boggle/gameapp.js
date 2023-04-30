@@ -1,7 +1,7 @@
 YUI.add("gameapp", function(Y) {
 
 	var console = new Y.Console();
-	console.render();
+	//console.render();
 
 	var parrframe = parent;
 	var parrapp = parent.app.get('activeView');
@@ -599,7 +599,7 @@ YUI.add("gameapp", function(Y) {
 			Y.one('#wrapper').setStyle('backgroundImage','url("images/back3.jpg")');
 			colorRestore = { };
 			botmsg_received = [];
-			var clock = new Y.Clock({timeleft:25,urgent_threshold:11});
+			var clock = new Y.Clock({timeleft:120,urgent_threshold:11});
 			this.clockmodelview = new Y.ClockView({model:clock});
 			var container = this.get('container');
 			container.append(this.clockmodelview.render().get('container'));
